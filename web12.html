@@ -45,23 +45,23 @@
             
                         <ul data-slides>
                             <li class="slide" data-active>
-                                <img src="img/slide1_123.jpg">
+                                <img src="img/slide11.jpg">
                             </li>
             
                             <li class="slide">
-                                <img src="img/slide2.webp">
+                                <img src="img/slide3.jpg">
                             </li>
             
                             <li class="slide">
-                                <img src="img/slide3.webp">
+                                <img src="img/slide5.jpg">
                             </li>
             
                             <li class="slide">
-                                <img src="img/slide4.webp">
+                                <img src="img/slide3.jpg">
                             </li>
             
                             <li class="slide">
-                                <img src="img/slide5.webp">
+                                <img src="img/slide2.jpg">
                             </li>
                         </ul>
             
@@ -232,6 +232,21 @@
                                                 <p>Click the button to display an alert box.</p>
 
                                                 <button onclick="myFunction()">Try it</button>
-s                                                      
+                                                <script>const buttons = document.querySelectorAll('[data-carousel-btn]');
+          
+                                                  buttons.forEach(btn => {
+                                                      btn.addEventListener('click', () => {
+                                                          const offset = btn.dataset.carouselButton === 'next' ? 1 : -1
+                                                          const slides = btn.closest('[data-carousel]').querySelector('[data-slides]')
+                                                  
+                                                          const activeSlide = slides.querySelector('[data-active]')
+                                                          let newIndex = [...slides.children].indexOf(activeSlide) + offset
+                                                          if (newIndex < 0) newIndex = slides.children.length - 1
+                                                          if (newIndex >= slides.children.length) newIndex = 0
+                                                  
+                                                          slides.children[newIndex].dataset.active = true
+                                                          delete activeSlide.dataset.active
+                                                      });
+                                                  });</script>                                                    
             </body>
 </html>
